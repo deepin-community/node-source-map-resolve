@@ -1,0 +1,4 @@
+Test-Command: cd decode-uri-component && sh -ex ../debian/nodejs/decode-uri-component/test && cd ../source-map-url && sh -ex ../debian/nodejs/source-map-url/test
+Depends: @, @builddeps@
+Features: test-name=decode-uri-component-test
+Restrictions: allow-stderr

@@ -1,0 +1,28 @@
+Source: node-source-map-resolve
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Xavier Guimard <yadd@debian.org>
+Testsuite: autopkgtest-pkg-nodejs
+Build-Depends: debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , mocha <!nocheck>
+ , node-expect.js <!nocheck>
+ , node-setimmediate <!nocheck>
+ , node-tape <!nocheck>
+Standards-Version: 4.5.0
+Homepage: https://github.com/lydell/source-map-resolve#readme
+Vcs-Git: https://salsa.debian.org/js-team/node-source-map-resolve.git
+Vcs-Browser: https://salsa.debian.org/js-team/node-source-map-resolve
+Rules-Requires-Root: no
+
+Package: node-source-map-resolve
+Architecture: all
+Depends: ${misc:Depends}
+ , nodejs (>= 6)
+Provides: ${nodejs:Provides}
+Description: Node module to resolve source map and/or sources for a generated file
+ source-map-resolve resolves the source map for a given generated file by
+ looking for a sourceMappingURL comment. The spec defines yet a way to
+ provide the URL to the source map: by sending the `SourceMap: <url>` header
+ along with the generated file.

@@ -1,0 +1,19 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-source-map-resolve-$1.tar.gz/ \
+ https://github.com/lydell/source-map-resolve/releases .*/archive/v?([\d\.]+).tar.gz group
+
+opts="searchmode=plain,component=atob,pgpmode=none" \
+ https://registry.npmjs.org/atob https://registry.npmjs.org/atob/-/atob-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts=\
+component=decode-uri-component,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-decode-uri-component-$1.tar.gz/ \
+ https://github.com/samverschueren/decode-uri-component/tags .*/archive/v?([\d\.]+).tar.gz checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=source-map-url,pgpmode=none" \
+ https://registry.npmjs.org/source-map-url https://registry.npmjs.org/source-map-url/-/source-map-url-([\d\.]+)@ARCHIVE_EXT@ checksum

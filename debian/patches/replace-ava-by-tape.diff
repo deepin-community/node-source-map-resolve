@@ -1,0 +1,47 @@
+Description: replace ava by tape in decode-uri-component test
+ replace also .. by component names (for autopkgtest)
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-11-03
+
+--- a/decode-uri-component/test.js
++++ b/decode-uri-component/test.js
+@@ -1,5 +1,5 @@
+-import test from 'ava';
+-import m from './';
++const test = require('tape');
++const m = require('./');
+ 
+ const tests = {
+ 	'test': 'test',
+@@ -37,14 +37,18 @@
+ 
+ function macro(t, input, expected) {
+ 	t.is(m(input), expected);
++	t.end();
+ }
+ 
+ macro.title = (providedTitle, input, expected) => `${input} → ${expected}`;
+ 
+ test('type error', t => {
+ 	t.throws(() => m(5), 'Expected `encodedURI` to be of type `string`, got `number`');
++	t.end();
+ });
+ 
+ for (const input of Object.keys(tests)) {
+-	test(macro, input, tests[input]);
++	test(input, t => {
++	    macro(t, input, tests[input])
++	});
+ }
+--- a/source-map-url/test/source-map-url.js
++++ b/source-map-url/test/source-map-url.js
+@@ -3,7 +3,7 @@
+ 
+ var expect = require("expect.js")
+ 
+-var sourceMappingURL = require("../")
++var sourceMappingURL = require("source-map-url")
+ 
+ var comments = {
+ 

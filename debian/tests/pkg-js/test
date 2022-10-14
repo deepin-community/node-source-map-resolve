@@ -1,0 +1,1 @@
+tape test/index.js test/read.js test/windows.js
